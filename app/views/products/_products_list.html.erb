@@ -1,0 +1,15 @@
+<%# @products.each do |product| %>
+    <!--<div class="large-4 small-6 columns">-->
+      <!--<%#= link_to product do %>-->
+          <!--<%#= image_tag product.image %>-->
+      <!--<%# end %>-->
+      <!--<div class="panel">-->
+        <!--<h5><%#= product.name %></h5>-->
+        <!--<h6 class="subheader"><%#= number_to_currency(product.price, locale: :ru) %></h6>-->
+      <!--</div>-->
+    <!--</div>-->
+<%# end %>
+
+<% @products.each do |product| %>
+    <%= render 'product_row', product: product, order_item: @order_item %>
+<% end %>

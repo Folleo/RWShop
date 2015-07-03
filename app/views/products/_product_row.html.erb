@@ -1,0 +1,13 @@
+<div class="large-4 small-6 columns">
+  <div class="product-card padly">
+    <%= link_to product, class: 'poster' do %>
+        <%= image_tag product.image %>
+        <div class="product-info ell panel-bg padmy padlx">
+          <div class="title">
+            <h6><%= product.name %></h6>
+          </div>
+          <p class="left price label product-label radius"><%= number_to_currency(product.price, locale: :ru) %></p>
+        </div>
+    <% end %>
+  </div>
+</div>

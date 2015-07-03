@@ -1,0 +1,11 @@
+insert into products (name, price, created_at, updated_at) values ('tea', '250.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('coffee', '450.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('teapot', '2800.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('coffee maker', '5000.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('bread', '20.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('sugar', '50.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('red cavier', '1500.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('black cavier', '7000.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('butter', '45.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('tomato', '90.00', now(), now());
+insert into products (name, price, created_at, updated_at) values ('olives', '150.00', now(), now());

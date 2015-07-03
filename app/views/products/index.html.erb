@@ -1,0 +1,39 @@
+<br>
+
+<div class="row">
+  <div class="large-12 columns">
+
+    <div class="row">
+
+
+      <div class="large-4 small-12 columns">
+
+
+        <div class="hide-for-small panel">
+          <%= link_to fetch_products_path(), remote: true do %>
+              <h4>All Categories</h4>
+          <% end %>
+        </div>
+
+
+        <% @categories.each do |category| %>
+            <%= link_to fetch_products_path(cat_id: category.id), remote: true do %>
+                <div class="panel callout radius">
+                  <h6><%= category.name %></h6>
+                  <%= image_tag category.image %>
+                </div>
+            <% end %>
+        <% end %>
+
+      </div>
+
+
+      <div class="large-8 columns">
+        <div id="products_grid" class="row">
+          <%= render partial: 'products_list', locals: {products: @products} %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div data-equalizer class="cart-product large-12 column mb1">
+
+  <div class="column">
+    <div class="col-xs-8">
+      <h4><%= product.name %></h4>
+    </div>
+    <div class="col-xs-4">
+
+      <%= form_for order_item, remote: true do |f| %>
+          <h4 class="text-right">
+            Unit Price: <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>
+          </h4>
+          <div class="row">
+            <div class="col-xs-4">
+              <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
+              <%= f.hidden_field :product_id, value: product.id %>
+            </div>
+            <div class="col-xs-8 text-right">
+              <div class="btn-group">
+                <%= f.submit 'Update Quantity', class: 'btn btn-primary' %>
+                <%= link_to 'Delete', order_item, { method: :delete, remote: true, class: 'btn btn-danger'} %>
+              </div>
+            </div>
+          </div>
+          <h4 class="text-right">
+            Total Price: <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>
+          </h4>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<!--<div data-equalizer class="cart-product large-12 column mb1">-->
+  <!--<%= form_for order_item, remote: true do |f| %>-->
+  <!--<div class="column large-2 text-center p0" data-equalizer-watch>-->
+    <!--<%= link_to product do %>-->
+        <!--<%= image_tag product.image, class: "radius-l1" %>-->
+    <!--<% end %>-->
+  <!--</div>-->
+  <!--<div class="column large-7 glassy-bg text-center" data-equalizer-watch>-->
+    <!--<p class="scale ptm"> <%= product.name %> </p>-->
+    <!--<p><%= f.number_field :quantity, value: order_item.quantity.to_i, min: 1 %></p>-->
+  <!--</div>-->
+
+
+      <!--<%= f.hidden_field :product_id, value: product.id %>-->
+      <!--<div class="column large-3 primary-bg text-center radius-r1" data-equalizer-watch>-->
+        <!--<%= link_to '', { method: :delete, remote: true } do %>-->
+
+            <!--<i class="fi-x right"></i>-->
+        <!--<% end %>-->
+
+        <!--<h4 class="scale">-->
+          <!--Total: <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>-->
+        <!--</h4>-->
+      <!--</div>-->
+  <!--<% end %>-->
+<!--</div>-->
