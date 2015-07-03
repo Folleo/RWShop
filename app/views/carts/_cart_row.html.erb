@@ -8,7 +8,7 @@
 
       <%= form_for order_item, remote: true do |f| %>
           <h4 class="text-right">
-            Unit Price: <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>
+            Unit Price: <span style="color: green"><%= number_to_currency(order_item.unit_price, locale: :ru) %></span>
           </h4>
           <div class="row">
             <div class="col-xs-4">
