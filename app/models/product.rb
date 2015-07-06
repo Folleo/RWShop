@@ -5,4 +5,6 @@ class Product < ActiveRecord::Base
 
   default_scope { where(active: true) }
 
+  POPULAR_PRODUCTS_NUMBER = 9
+
 end

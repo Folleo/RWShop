@@ -9,6 +9,11 @@ class Order < ActiveRecord::Base
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
 
+  def update_product_sales
+    # ProductSale.where(:product_id => order.order_items.pluck(:product_id)).update_all(:sales => 1)
+
+  end
+
   private
 
   def set_order_status

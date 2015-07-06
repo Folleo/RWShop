@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.joins(:product_sale).order('product_sales.sales DESC').limit(10)
+    @products = Product.joins(:product_sale).order('product_sales.sales DESC').limit(Product::POPULAR_PRODUCTS_NUMBER)
     @categories = Category.all.order('id')
     @order_item = current_order.order_items.new
   end
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   # GET /products/from_category
   def from_category
     if params[:cat_id].nil?
-      @products = Product.joins(:product_sale).order('product_sales.sales DESC').limit(10)
+      @products = Product.joins(:product_sale).order('product_sales.sales DESC').limit(Product::POPULAR_PRODUCTS_NUMBER)
     else
       @products = Product.where(:category_id => params[:cat_id])
     end

@@ -18,7 +18,9 @@ class PaymentsController < ApplicationController
         order.order_status_id = 2
         order.user_id = current_user.id
         order.save
-        ProductSale.where(:product_id => order.order_items.pluck(:product_id)).update_all(:sales => 1)
+        order.order_items.each do |order_item|
+          order_item.update_sales
+        end
         session[:order_id] = nil
         redirect_to root_path, notice: 'The order has been successfully placed. Thank you' and return
       end

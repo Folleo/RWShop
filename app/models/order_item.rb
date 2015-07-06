@@ -20,6 +20,10 @@ class OrderItem < ActiveRecord::Base
     unit_price * quantity
   end
 
+  def update_sales
+    ProductSale.find_by_product_id(product.id).increment!(:sales, by = quantity)
+  end
+
   private
 
   def product_present
@@ -32,10 +36,6 @@ class OrderItem < ActiveRecord::Base
     if order.nil?
       errors.add(:order, 'is not a valid order.')
     end
-  end
-
-  def update_sales
-    ProductSale.find_by_product_id(product.id).increment(:sales)
   end
 
   def finalize
