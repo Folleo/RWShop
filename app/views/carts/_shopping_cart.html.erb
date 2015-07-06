@@ -7,7 +7,7 @@
       </ul>
     </div>
 <% end %>
-<% if @order_items.size == 0 %>
+<% if @order_items.nil? or @order_items.size == 0 %>
     <p class="text-center">
       There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some items to your cart.
     </p>
@@ -22,7 +22,7 @@
 
 
     <div class="input-group-btn">
-        <%= link_to 'Checkout', '#', class: 'button' %>
+        <%= link_to 'Checkout', new_payment_path, class: 'button' %>
     </div>
 
 

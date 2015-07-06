@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   def show
-    @order_items = current_order.order_items
+    if current_order.order_status_id == 1
+      @order_items = current_order.order_items
+    end
   end
 end

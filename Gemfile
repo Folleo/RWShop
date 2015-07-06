@@ -48,6 +48,3 @@ gem 'foundation-rails'
 
 # Devise User Model
 gem 'devise'
-
-# Cart gem
-gem 'acts_as_shopping_cart', '~> 0.2.1'

@@ -34,6 +34,10 @@ class OrderItem < ActiveRecord::Base
     end
   end
 
+  def update_sales
+    ProductSale.find_by_product_id(product.id).increment(:sales)
+  end
+
   def finalize
     self[:unit_price] = unit_price
     self[:total_price] = quantity * self[:unit_price]
