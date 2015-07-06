@@ -16,6 +16,9 @@
       <ul class="right">
         <%if signed_in?%>
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
+            <% if current_user.role?(Role::ADMIN)%>
+                <li><%= link_to 'Admin Page', root_path %></li>
+            <% end %>
             <li><%=link_to current_user.email, edit_user_registration_path%></li>
             <li><%=link_to 'Logout', destroy_user_session_path, method: :delete%></li>
         <%else%>
