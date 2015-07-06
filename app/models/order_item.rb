@@ -8,6 +8,16 @@ class OrderItem < ActiveRecord::Base
 
   before_save :finalize
 
+  def has_discount
+    if !product.category.discount_amount.nil? &&
+       !product.category.discount_percent.nil? &&
+        quantity >= product.category.discount_amount
+      true
+    else
+      false
+    end
+  end
+
   def unit_price
     if persisted?
       self[:unit_price]
@@ -17,7 +27,11 @@ class OrderItem < ActiveRecord::Base
   end
 
   def total_price
-    unit_price * quantity
+    if has_discount
+      unit_price * quantity * (1 - product.category.discount_percent / 100.0)
+    else
+      unit_price * quantity
+    end
   end
 
   def update_sales
