@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.joins(:product_sale).order('product_sales.sales DESC').limit(Product::POPULAR_PRODUCTS_NUMBER)
-    @categories = Category.all.order('id')
     @order_item = current_order.order_items.new
   end
 
@@ -13,7 +12,6 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    @category = Category.find(@product.category_id)
     # @cart_action = @product.cart_action current_user.try :id
     @order_item = current_order.order_items.new
   end

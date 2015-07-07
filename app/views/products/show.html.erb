@@ -3,8 +3,11 @@
 </div>
 
 <div class="large-9 small-12 column">
+
+  <p class="mb0">Category: <%= @product.category.name %></p>
+
   <h3>
-    <%= @category.name %> > <%= @product.name %>
+    <%= @product.name %>
   </h3>
   <p class="label product-label radius mb1"><%= number_to_currency(@product.price, locale: :ru) %></p>
 
