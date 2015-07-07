@@ -11,13 +11,13 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-app="app">
 
   <%= render 'layouts/header' %>
 
   <%= render 'layouts/alerts' %>
 
-  <div ng-view id="main-content" class="row full-min-height">
+  <div id="main-content" class="row full-min-height">
     <%= yield %>
   </div>
 

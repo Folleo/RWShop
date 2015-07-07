@@ -1,0 +1,23 @@
+var app = angular.module('app', [
+    'ngRoute',
+    'templates'
+]);
+
+app.config(function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $routeProvider
+            .when("/", {
+                templateUrl: 'templates/index.html',
+                controller: 'IndexCtrl'
+            })
+//            .when("/products/new",
+//            { templateUrl: "<%= asset_path('products/edit.html') %> ",
+//                controller: "ProductsEditCtrl" })
+//            .when("/products/:id",
+//            { templateUrl: "<%= asset_path('products/show.html') %> ",
+//                controller: "ProductsShowCtrl" })
+//            .when("/products/:id/edit",
+//            { templateUrl: "<%= asset_path('products/edit.html') %> ",
+//                controller: "ProductsEditCtrl" })
+            .otherwise({ redirectTo: "/example" });
+});
