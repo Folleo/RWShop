@@ -16,14 +16,19 @@
       <ul class="right">
         <%if signed_in?%>
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
+            <li class="divider"></li>
             <% if current_user.role?(Role::ADMIN)%>
                 <li><%= link_to 'Admin Page', root_path %></li>
+                <li class="divider"></li>
             <% end %>
             <li><%=link_to current_user.email, edit_user_registration_path%></li>
+            <li class="divider"></li>
             <li><%=link_to 'Logout', destroy_user_session_path, method: :delete%></li>
         <%else%>
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
+            <li class="divider"></li>
             <li><%=link_to 'Register', new_user_registration_path%></li>
+            <li class="divider"></li>
             <li><%=link_to 'Login', new_user_session_path%></li>
         <%end%>
       </ul>

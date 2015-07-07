@@ -16,7 +16,7 @@
         </div>
 
 
-        <% @categories.each do |category| %>
+        <% Product.categories.each do |category| %>
             <%= link_to fetch_products_path(cat_id: category.id), remote: true do %>
                 <div class="panel callout radius">
                   <h6><%= category.name %></h6>

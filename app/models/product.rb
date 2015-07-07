@@ -8,4 +8,8 @@ class Product < ActiveRecord::Base
 
   POPULAR_PRODUCTS_NUMBER = 9
 
+  def self.categories
+    Category.all.order('id')
+  end
+
 end
