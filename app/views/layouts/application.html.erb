@@ -17,7 +17,7 @@
 
   <%= render 'layouts/alerts' %>
 
-  <div id="main-content" class="row full-min-height">
+  <div ng-view id="main-content" class="row full-min-height">
     <%= yield %>
   </div>
 
@@ -27,7 +27,6 @@
     </div>
   </footer>
 
-  <%= javascript_include_tag 'application' %>
 
   </body>
 </html>

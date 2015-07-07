@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
-  root 'products#example'
-  get '*path' => 'products#example'
+  root 'products#index'
+  get '*path' => 'products#index'
 
   get '/fetch_products' => 'products#from_category', as: 'fetch_products'
   get 'payments/new' => 'payments#new', :as => 'new_payment'

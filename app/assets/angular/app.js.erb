@@ -7,7 +7,7 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
             .when("/", {
-                templateUrl: 'templates/index.html',
+                templateUrl: <%= asset_path 'templates/index.html' %>,
                 controller: 'IndexCtrl'
             })
 //            .when("/products/new",
@@ -19,5 +19,5 @@ app.config(function($routeProvider, $locationProvider) {
 //            .when("/products/:id/edit",
 //            { templateUrl: "<%= asset_path('products/edit.html') %> ",
 //                controller: "ProductsEditCtrl" })
-            .otherwise({ redirectTo: "/example" });
+            .otherwise({ redirectTo: "/" });
 });

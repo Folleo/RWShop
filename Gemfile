@@ -52,3 +52,4 @@ gem 'devise'
 # AngularJS
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
+gem 'sprockets'
