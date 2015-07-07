@@ -29,7 +29,7 @@
                 <%= product.category.discount_percent %>%
                 discount)
             <% end %>:
-            <span style="color: green"><%= number_to_currency(order_item.total_price) %></span>
+            <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>
           </h4>
 
       <% end %>

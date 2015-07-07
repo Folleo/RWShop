@@ -22,7 +22,7 @@
             <td><%= payment.first_name %></td>
             <td><%= payment.last_name %></td>
             <td><%= payment.last4 %></td>
-            <td><%= number_to_currency payment.amount %></td>
+            <td><%= number_to_currency(payment.amount, locale: :ru) %></td>
             <td><%= payment.success == true ? 'Yes' : 'No' %></td>
             <td><%= payment.authorization_code %></td>
           </tr>

@@ -1,0 +1,22 @@
+<div>
+<h4 class="header">Products</h4>
+
+
+  <table class="responsive">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th width="200">Name</th>
+      <th width="120">Description</th>
+      <th width="90">Price</th>
+      <th width="100">Category</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <% @products.each do |product| %>
+      <%= render 'admin/product_row', product: product %>
+    <% end %>
+  </table>
+
+</div>

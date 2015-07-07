@@ -18,7 +18,7 @@
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
             <li class="divider"></li>
             <% if current_user.role?(Role::ADMIN)%>
-                <li><%= link_to 'Admin Page', root_path %></li>
+                <li><%= link_to 'Admin Page', admin_path %></li>
                 <li class="divider"></li>
             <% end %>
             <li><%=link_to current_user.email, edit_user_registration_path%></li>

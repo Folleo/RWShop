@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
   get '/fetch_products' => 'products#from_category', as: 'fetch_products'
   get 'payments/new' => 'payments#new', :as => 'new_payment'
+  get '/admin' => 'admin#index'
 
   resources :categories
   resources :products
   resources :payments, only: [:index, :new, :create]
+  resources :admin
 
   resource :cart, only: [:show]  do
     put 'create/:product_id/quantity=:quantity/order_item=:order_item', to: 'order_items#create', as: :add_to
