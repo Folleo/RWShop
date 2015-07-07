@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get '/fetch_products' => 'products#from_category', as: 'fetch_products'
   get 'payments/new' => 'payments#new', :as => 'new_payment'
+  get 'example' => 'products#example'
 
   resources :categories
   resources :products

@@ -6,7 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : 'RusWizards eShop' %></title>
 
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -16,7 +17,7 @@
 
   <%= render 'layouts/alerts' %>
 
-  <div id="main-content" class="row full-min-height">
+  <div ng-view id="main-content" class="row full-min-height">
     <%= yield %>
   </div>
 
