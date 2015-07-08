@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/fetch_products' => 'products#from_category', as: 'fetch_products'
   get 'payments/new' => 'payments#new', :as => 'new_payment'
   get '/admin' => 'admin#index'
+  post '/products/:id' => 'products#update', :as => 'product_update'
+  get '/product_row/:id' => 'products#show_row', :as => 'product_row'
 
   resources :categories
   resources :products

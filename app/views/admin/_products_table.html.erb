@@ -1,0 +1,14 @@
+<thead>
+<tr>
+  <th width="auto">id</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Price</th>
+  <th>Category</th>
+  <th>Image</th>
+  <th>Actions</th>
+</tr>
+</thead>
+<% @products.each do |product| %>
+    <%= render 'admin/product_show_row', product: product %>
+<% end %>
