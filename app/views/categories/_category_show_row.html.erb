@@ -1,0 +1,22 @@
+<%= form_for category, remote: true do %>
+<tr id="category-row<%= category.id %>">
+  <td><%= category.id %></td>
+  <td><%= category.name %></td>
+  <td><%= category.description %></td>
+  <td><%= category.discount_percent %></td>
+  <td><%= category.discount_amount %></td>
+  <td><%= category.image %></td>
+  <td>
+    <%= link_to :controller => 'categories', :action => 'edit', :id => category.id, remote: true do %>
+        <i class="fi-page-edit"></i>
+    <% end %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to category, {
+                               method: :delete,
+                               remote: true,
+                               data: { confirm: "Are you sure to delete '#{category.name}'?"} } do %>
+        <i class="fi-minus-circle"></i>
+    <% end %>
+  </td>
+</tr>
+<% end %>

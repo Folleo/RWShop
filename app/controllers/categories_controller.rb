@@ -17,24 +17,36 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /categories/1/edit
   def edit
+    @category = Category.find(params[:id])
+    respond_to do | format |
+      format.js
+      format.html
+    end
   end
 
   # POST /categories
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+    @categories = Category.all.order(:id)
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
+        flash[:notice] = 'Category was successfully created.'
+        #format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        #format.json { render :show, status: :created, location: @category }
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        flash[:notice] = 'There are some errors while creating new category.'
+        #format.html { render :new }
+        #format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,10 +57,11 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
+        #format.json { render :show, status: :ok, location: @category }
+        format.js
       else
         format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        #format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,9 +70,18 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category.destroy
+    @categories = Category.all.order('id')
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      #format.json { head :no_content }
+      format.js
+    end
+  end
+
+  def show_row
+    @category = Category.find(params[:id])
+    respond_to do |format|
+      format.js
     end
   end
 

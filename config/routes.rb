@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/admin/products' => 'admin#products', :as => 'admin_products'
   get '/admin/users' => 'admin#users', :as => 'admin_users'
   get '/product_row/:id' => 'products#show_row', :as => 'product_row'
+  get '/category_row/:id' => 'categories#show_row', :as => 'category_row'
 
   resources :categories
   resources :products

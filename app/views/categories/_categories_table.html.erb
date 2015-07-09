@@ -1,0 +1,14 @@
+<thead>
+<tr>
+  <th width="auto">id</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Discount percent</th>
+  <th>Discount amount</th>
+  <th>Image</th>
+  <th>Actions</th>
+</tr>
+</thead>
+<% @categories.each do |category| %>
+    <%= render 'categories/category_show_row', category: category %>
+<% end %>
