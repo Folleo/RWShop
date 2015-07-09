@@ -1,0 +1,13 @@
+<thead>
+<tr>
+  <th width="auto">ID</th>
+  <th>Email</th>
+  <th>Sign in count</th>
+  <th>Role</th>
+  <th>Disabled</th>
+  <th>Action</th>
+</tr>
+</thead>
+<% @users.each do |user| %>
+    <%= render 'users/user_show_row', user: user %>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_for user, :url => change_user_state_path(user), remote: true do %>
+    <tr id="user-row<%= user.id %>">
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.sign_in_count %></td>
+      <td><%= user.role_names %></td>
+      <td><%= user.disabled %></td>
+      <td>
+        <% if user.disabled %>
+            <%= link_to 'enable', :controller => 'admin', :action => 'change_user_state', :id => user.id, remote: true %>
+        <% else %>
+            <%= link_to 'disable', :controller => 'admin', :action => 'change_user_state', :id => user.id, remote: true %>
+        <% end %>
+      </td>
+    </tr>
+<% end %>

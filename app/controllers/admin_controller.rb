@@ -16,6 +16,14 @@ class AdminController < ApplicationController
     @users = User.all.order(:id)
   end
 
+  def change_user_state
+    @user = User.find(params[:id])
+    @user.update_attribute(:disabled, !@user.disabled)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def require_admin
     if signed_in? and current_user.role?(Role::ADMIN)
       true

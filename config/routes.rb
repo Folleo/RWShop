@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/admin/categories' => 'admin#categories', :as => 'admin_categories'
   get '/admin/products' => 'admin#products', :as => 'admin_products'
   get '/admin/users' => 'admin#users', :as => 'admin_users'
+  get '/admin/change_user_state' => 'admin#change_user_state', :as => 'change_user_state'
   get '/product_row/:id' => 'products#show_row', :as => 'product_row'
   get '/category_row/:id' => 'categories#show_row', :as => 'category_row'
 
