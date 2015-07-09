@@ -1,0 +1,3 @@
+$("#new-product").html('<%= escape_javascript(link_to 'Create new product', new_product_path, remote: true) %>');
+$("#products-table").html("<%= escape_javascript(render 'admin/products_table') %>");
+$("#alerts").html("<%= escape_javascript(render 'layouts/alerts') %>");

@@ -43,6 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Foundation Framework
 gem 'foundation-rails'
+gem 'modernizr-rails'
 
 # Devise User Model
 gem 'devise'

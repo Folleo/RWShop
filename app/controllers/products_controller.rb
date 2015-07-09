@@ -38,6 +38,9 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /products/1/edit
@@ -52,21 +55,19 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @products = Product.all.order(:id)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        flash[:notice] = 'Product was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        flash[:notice] = 'There are some errors while creating new product.'
       end
+      format.js
     end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
-  # POST /products/1
   def update
     respond_to do |format|
       if @product.update(product_params)

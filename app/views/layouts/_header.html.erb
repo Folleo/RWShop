@@ -17,8 +17,15 @@
         <%if signed_in?%>
             <li class="cart-text"><%= render 'layouts/cart_text' %></li>
             <li class="divider"></li>
-            <% if current_user.role?(Role::ADMIN)%>
-                <li><%= link_to 'Admin Page', admin_path %></li>
+            <% if current_user.role?(Role::ADMIN) %>
+                <li class="has-dropdown">
+                  <%= link_to 'Admin Page', admin_path %>
+                  <ul class="dropdown">
+                    <li><%= link_to 'Products', admin_products_path %></li>
+                    <li><%= link_to 'Categories', admin_categories_path %></li>
+                    <li><%= link_to 'Users', admin_users_path %></li>
+                  </ul>
+                </li>
                 <li class="divider"></li>
             <% end %>
             <li><%=link_to current_user.email, edit_user_registration_path%></li>
