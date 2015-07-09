@@ -1,0 +1,18 @@
+<div>
+  <h3>Categories</h3>
+
+  <div class="row">
+
+    <div class="small-12 columns" id="new-category">
+      <%= link_to 'Create new category', new_category_path, remote: true %>
+    </div>
+
+    <div class="small-12 column">
+      <br>
+      <table class="responsive" id="categories-table">
+        <%#= render 'categories/admin/categories_table' %>
+      </table>
+    </div>
+  </div>
+
+</div>

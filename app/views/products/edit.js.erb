@@ -1,1 +1,1 @@
-$("#product-row<%= @product.id %>").replaceWith("<%= escape_javascript(render 'admin/product_edit_row', product: @product) %>");
+$("#product-row<%= @product.id %>").replaceWith("<%= escape_javascript(render 'products/admin/product_edit_row', product: @product) %>");

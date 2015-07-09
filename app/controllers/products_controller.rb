@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       format.js
+      format.html
     end
   end
 
@@ -48,6 +49,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do | format |
       format.js
+      format.html
     end
   end
 
@@ -71,11 +73,11 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        #format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         #format.json { render :show, status: :ok, location: @product }
         format.js
       else
-        #format.html { render :edit }
+        format.html { render :edit }
         #format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
