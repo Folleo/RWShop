@@ -6,7 +6,9 @@
       <td><%= user.role_names %></td>
       <td><%= user.disabled %></td>
       <td>
-        <% if user.disabled %>
+        <% if current_user.id == user.id %>
+            it's you
+        <% elsif user.disabled %>
             <%= link_to 'enable', :controller => 'admin', :action => 'change_user_state', :id => user.id, remote: true %>
         <% else %>
             <%= link_to 'disable', :controller => 'admin', :action => 'change_user_state', :id => user.id, remote: true %>

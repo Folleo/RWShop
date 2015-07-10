@@ -28,7 +28,7 @@ class AdminController < ApplicationController
     if signed_in? and current_user.role?(Role::ADMIN)
       true
     else
-      redirect_to root_path
+      render_403
     end
   end
 

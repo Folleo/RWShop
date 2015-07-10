@@ -1,1 +1,1 @@
-// TODO: update row in user table
+$("#user-row<%= @user.id %>").html("<%= escape_javascript(render 'users/user_show_row', user: @user) %>");

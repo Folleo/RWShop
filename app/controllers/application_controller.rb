@@ -24,4 +24,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_user
+    if signed_in? and current_user.role?(Role::USER)
+      true
+    else
+      render_403
+    end
+  end
+
+  def render_403
+    respond_to do |format|
+      format.html { render file: 'errors/403', layout: false, status: 403 }
+      format.any  { head :not_found }
+    end
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: 404 }
+      format.any  { head :not_found }
+    end
+  end
+
 end
