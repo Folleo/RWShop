@@ -10,10 +10,10 @@
       <div class="small-2 columns"><%= f.text_field :discount_amount, placeholder: 'discount_amount' %></div>
       <div class="small-3 columns"><%= f.text_field :image, placeholder: 'image path (http://...)' %></div>
       <div class="small-1 column end">
-        <%= link_to categories_path, :onclick => "$('.new_form').submit()", remote: true do %>
+        <%= link_to categories_path, onclick: "$('.new_form').submit()", remote: true do %>
             <i class="fi-save"></i>
         <% end %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to 'Cancel', remote: true do %>
+        <%= link_to '#', onclick: 'create_new_category()' do %>
             <i class="fi-minus-circle"></i>
         <% end %>
       </div>

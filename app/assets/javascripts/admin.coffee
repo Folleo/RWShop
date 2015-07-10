@@ -1,6 +1,5 @@
-$(window).load ->
-  $('#cart_button').click (e) ->
-    $add_to_cart = document.getElementById("cart_button");
-    $checkout = document.getElementById("cart_link");
-    $add_to_cart.style.display = 'none';
-    $checkout.style.display = '';
+root = exports ? this
+root.create_new_product = () ->
+    $('#new-product').html('<a href="/products/new" data-remote="true">Create new product</a>');
+root.create_new_category = () ->
+  $('#new-category').html('<a href="/categories/new" data-remote="true">Create new category</a>');

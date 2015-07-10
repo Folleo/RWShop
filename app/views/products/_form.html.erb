@@ -1,4 +1,4 @@
-<%= form_for order_item, remote: true do |f| %>
+<%= form_for order_item, html: {class: 'order_item_form', method: :post}, remote: true do |f| %>
     <h4 class="text-right">
       Unit Price: <span style="color: green"><%= number_to_currency(@product.price, locale: :ru) %></span>
     </h4>
@@ -7,7 +7,8 @@
       <div class="input-group-btn">
         <%= f.hidden_field :product_id, value: product.id %>
         <%= f.submit 'Add to Cart',  class: 'button', id: 'cart_button' %>
-        <%= link_to 'Checkout', cart_path, class: 'button', id: 'cart_link', style: 'display: none' %>
+        <%#= link_to 'Add to Cart', order_items_path, onclick: "$('#order_item_form').submit()", class: 'button', id: 'cart_button', remote: true, method: :post %>
+        <%= link_to 'Go to Cart', cart_path, class: 'button', id: 'cart_link', style: 'display: none' %>
       </div>
     </div>
 <% end %>

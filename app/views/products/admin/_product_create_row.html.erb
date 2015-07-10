@@ -6,14 +6,14 @@
     <div class="row">
       <div class="small-2 columns"><%= f.text_field :name, placeholder: 'product name' %></div>
       <div class="small-2 columns"><%= f.text_field :description, placeholder: 'description' %></div>
-      <div class="small-1 column"><%= f.number_field :price, placeholder: 'price' %></div>
+      <div class="small-2 columns"><%= f.number_field :price, placeholder: 'price' %></div>
       <div class="small-2 columns"><%= f.collection_select :category_id, Category.order(:id), :id, :name %></div>
       <div class="small-3 columns"><%= f.text_field :image, placeholder: 'image path (http://...)' %></div>
       <div class="small-1 column end">
         <%= link_to products_path, :onclick => "$('.new_form').submit()", remote: true do %>
             <i class="fi-save"></i>
         <% end %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to 'Cancel', remote: true do %>
+        <%= link_to '#', onclick: 'create_new_product()' do %>
             <i class="fi-minus-circle"></i>
         <% end %>
       </div>
