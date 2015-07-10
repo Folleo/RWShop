@@ -23,7 +23,9 @@
     <% end %>
 
 
-    <p class="mb0"> Total price: <%= number_to_currency(current_order.subtotal, locale: :ru) %> </p>
+    <p class="mb0"> Total price:
+      <span style="color: green"><%= number_to_currency(current_order.subtotal, locale: :ru) %></span>
+    </p>
     <br>
 
     <div class="input-group-btn">

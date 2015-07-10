@@ -12,7 +12,11 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    @order_item = current_order.order_items.new
+    @order_item = current_order.order_items.find_by(product_id: @product.id)
+    if @order_item.nil?
+      @order_item = current_order.order_items.new
+      @order_item.quantity = 1
+    end
   end
 
   # GET /product_row/1
