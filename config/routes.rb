@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]  do
     put 'create/:product_id/quantity=:quantity/order_item=:order_item', to: 'order_items#create', as: :add_to
     put 'destroy/:product_id/quantity=:quantity/order_item=:order_item', to: 'order_items#destroy', as: :remove_from
+    get '/cart' => 'carts#show', as: 'cart'
   end
 
   resources :order_items, only: [:create, :update, :destroy]

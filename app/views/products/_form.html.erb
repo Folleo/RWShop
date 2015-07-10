@@ -6,7 +6,8 @@
       <%= f.number_field :quantity, value: 1, class: 'form-control', min: 1 %>
       <div class="input-group-btn">
         <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.submit 'Add to Cart', class: 'button' %>
+        <%= f.submit 'Add to Cart',  class: 'button', id: 'cart_button' %>
+        <%= link_to 'Checkout', cart_path, class: 'button', id: 'cart_link', style: 'display: none' %>
       </div>
     </div>
 <% end %>

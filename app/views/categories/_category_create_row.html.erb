@@ -1,10 +1,14 @@
 <%= form_for(@category, html: {class: 'new_form', method: :post}, remote: true) do |f| %>
     <div class="row">
-      <div class="small-2 columns"><%= f.text_field :name %></div>
-      <div class="small-2 columns"><%= f.text_field :description %></div>
-      <div class="small-2 columns"><%= f.text_field :discount_percent %></div>
-      <div class="small-2 columns"><%= f.text_field :discount_amount %></div>
-      <div class="small-3 columns"><%= f.text_field :image %></div>
+      <div class="small-12 columns">Adding new category:</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="small-2 columns"><%= f.text_field :name, placeholder: 'category name' %></div>
+      <div class="small-2 columns"><%= f.text_field :description, placeholder: 'description' %></div>
+      <div class="small-2 columns"><%= f.text_field :discount_percent, placeholder: 'discount_percent' %></div>
+      <div class="small-2 columns"><%= f.text_field :discount_amount, placeholder: 'discount_amount' %></div>
+      <div class="small-3 columns"><%= f.text_field :image, placeholder: 'image path (http://...)' %></div>
       <div class="small-1 column end">
         <%= link_to categories_path, :onclick => "$('.new_form').submit()", remote: true do %>
             <i class="fi-save"></i>
