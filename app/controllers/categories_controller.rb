@@ -63,6 +63,10 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    products = Product.where(category_id: params[:id])
+    if !products.nil?
+      products.destroy_all
+    end
     @category.destroy
     @categories = Category.all.order('id')
     respond_to do |format|
