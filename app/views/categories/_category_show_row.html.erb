@@ -1,4 +1,5 @@
 <%= form_for category, remote: true do %>
+
 <tr id="category-row<%= category.id %>">
   <td><%= category.id %></td>
   <td><%= category.name %></td>
@@ -7,16 +8,29 @@
   <td><%= category.discount_amount %></td>
   <td><%= category.image %></td>
   <td>
-    <%= link_to :controller => 'categories', :action => 'edit', :id => category.id, remote: true do %>
+    <%= link_to edit_category_path(category.id),
+                title: 'edit category',
+                remote: true do %>
         <i class="fi-page-edit"></i>
     <% end %>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to category, {
-                               method: :delete,
-                               remote: true,
-                               data: { confirm: "Are you sure to delete '#{category.name}'?"} } do %>
+
+    <%= link_to bind_products_path(category.id),
+                data: { prompt: { message: 'Enter new category id:',param: 'new_category_id' } },
+                title: 'bind products to another category',
+                remote: true do %>
+        <i class="fi-arrows-expand"></i>
+    <% end %>
+
+    <%= link_to category, method: :delete,
+                          remote: true,
+                          title: 'delete category',
+                          data: { confirm:
+                               "Are you sure want to delete '#{category.name}'?\n" +
+                               "Note: all products, related to this category will be deleted as well.\n" +
+                               'You can bind all products to another category by selecting appropriate action.'} do %>
         <i class="fi-minus-circle"></i>
     <% end %>
   </td>
 </tr>
+
 <% end %>

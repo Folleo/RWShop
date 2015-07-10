@@ -40,13 +40,9 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
-        #format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        #format.json { render :show, status: :created, location: @category }
         format.js
       else
         flash[:notice] = 'There are some errors while creating new category.'
-        #format.html { render :new }
-        #format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,11 +53,9 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @category }
         format.js
       else
         format.html { render :edit }
-        #format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,8 +66,6 @@ class CategoriesController < ApplicationController
     @category.destroy
     @categories = Category.all.order('id')
     respond_to do |format|
-      #format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
-      #format.json { head :no_content }
       format.js
     end
   end
@@ -85,13 +77,24 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def bind_products
+    category = Category.find(params[:id])
+    if is_number?(params[:new_category_id])
+      new_category = Category.find(params[:new_category_id])
+      products = Product.where(category_id: category.id)
+      if products.update_all(category_id: new_category.id)
+        flash[:notice] = 'Products successfully binded to new category'
+      end
+    else
+      flash[:notice] = 'Incorrect value of new category id'
+    end
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :description, :discount_percent, :discount_amount, :image)
     end

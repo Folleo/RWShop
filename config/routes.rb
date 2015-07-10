@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/admin/change_user_state' => 'admin#change_user_state', :as => 'change_user_state'
   get '/product_row/:id' => 'products#show_row', :as => 'product_row'
   get '/category_row/:id' => 'categories#show_row', :as => 'category_row'
+  get '/category/:id/bind_products' => 'categories#bind_products', :as => 'bind_products'
 
   resources :categories
   resources :products
