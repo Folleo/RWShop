@@ -19,8 +19,8 @@
         <% Product.categories.each do |category| %>
             <%= link_to fetch_products_path(cat_id: category.id), remote: true do %>
                 <div id="category-<%= category.id %>" class="panel radius">
-                <h6><%= category.name %></h6>
-                <% unless category.image.blank? %>
+                  <h6><%= category.name %></h6>
+                  <% unless category.image.blank? %>
                       <%= image_tag category.image %>
                   <% end %>
                 </div>
@@ -29,10 +29,8 @@
 
       </div>
 
-      <div class="large-8 columns">
-        <div id="products_grid" class="row">
-          <%= render partial: 'products_list', locals: {products: @products} %>
-        </div>
+      <div id="products_grid" class="large-8 columns">
+        <%= render partial: 'products_list', locals: {products: @products} %>
       </div>
 
     </div>

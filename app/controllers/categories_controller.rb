@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:bind_products, :edit, :update, :destroy]
 
+  def index
+    redirect_to root_path
+  end
+
   # GET /categories/new
   def new
     @category = Category.new
