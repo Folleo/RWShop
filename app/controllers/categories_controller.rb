@@ -1,18 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
-
-  # GET /categories
-  # GET /categories.json
-  def index
-    @categories = Category.all.order('id')
-    @products = Product.all
-  end
-
-  # GET /categories/1
-  # GET /categories/1.json
-  def show
-    @categories = Category.all
-  end
+  before_action :set_category, only: [:bind_products, :edit, :update, :destroy]
 
   # GET /categories/new
   def new
@@ -24,7 +11,6 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
     respond_to do | format |
       format.js
       format.html
@@ -85,19 +71,20 @@ class CategoriesController < ApplicationController
   end
 
   def bind_products
-    category = Category.find(params[:id])
     if is_number?(params[:new_category_id])
-      new_category = Category.find(params[:new_category_id])
-      products = Product.where(category_id: category.id)
-      if products.update_all(category_id: new_category.id)
+      @new_category = Category.find(params[:new_category_id])
+      products = Product.where(category_id: @category.id)
+      if products.update_all(category_id: @new_category.id)
         flash[:notice] = 'Products successfully binded to new category'
       end
     else
       flash[:error] = 'Incorrect value of new category id'
     end
+    render nothing: true
   end
 
   private
+
     def set_category
       @category = Category.find(params[:id])
     end
