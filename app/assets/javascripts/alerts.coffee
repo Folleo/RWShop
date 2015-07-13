@@ -18,6 +18,7 @@ show_ajax_message = (msg, type) ->
   return
 
 $(document).ajaxComplete (event, request) ->
+  $(document).foundation('equalizer','reflow');
   msg = request.getResponseHeader('X-Message')
   type = request.getResponseHeader('X-Message-Type')
   if type != null

@@ -12,7 +12,10 @@
             <%= f.submit 'Update Cart', class: 'button', id: 'cart_button' %>
         <% end %>
         <%#= link_to 'Add to Cart', order_items_path, onclick: "$('#order_item_form').submit()", class: 'button', id: 'cart_button', remote: true, method: :post %>
-        <%= link_to 'Go to Cart', cart_path, class: 'button', id: 'cart_link', style: 'display: none' %>
+        <%= link_to cart_path, class: 'button', id: 'cart_link', style: 'display: none' do %>
+            <i class="fi-shopping-cart"></i>
+            Go to Cart
+        <% end %>
       </div>
     </div>
 <% end %>

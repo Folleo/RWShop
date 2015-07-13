@@ -7,6 +7,7 @@
       </ul>
     </div>
 <% end %>
+
 <% if @order_items.nil? or @order_items.size == 0 %>
     <p class="text-center">
       There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some items to your
@@ -15,18 +16,17 @@
 <% else %>
     <div class="p1 glassy-bg mb1 text-center radius-l1 radius-r1">
       <h4>My Cart</h4>
-
       <p class="mb0"> You've selected <span class="cart-count"><%= @order_items.size %></span> product(s).</p>
     </div>
+
     <% @order_items.each do |order_item| %>
         <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
     <% end %>
 
 
-    <p class="mb0"> Total price:
+    <h4 class="mb1"> Total price:
       <span style="color: green"><%= number_to_currency(current_order.subtotal, locale: :ru) %></span>
-    </p>
-    <br>
+    </h4>
 
     <div class="input-group-btn">
       <%= link_to 'Checkout', new_payment_path, class: 'button' %>
