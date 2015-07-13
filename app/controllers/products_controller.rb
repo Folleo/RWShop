@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
     @order_item = current_order.order_items.find_by(product_id: @product.id)
     if @order_item.nil?
       @order_item = current_order.order_items.new
@@ -24,7 +23,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       format.js
-      format.html
     end
   end
 
@@ -50,10 +48,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.find(params[:id])
     respond_to do | format |
       format.js
-      format.html
     end
   end
 
@@ -62,12 +58,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @products = Product.all.order(:id)
+    if @product.save
+      flash[:notice] = 'Product was successfully created.'
+    else
+      flash[:error] = @product.errors.full_messages.first
+    end
     respond_to do |format|
-      if @product.save
-        flash[:notice] = 'Product was successfully created.'
-      else
-        flash[:error] = 'There are some errors while creating new product.'
-      end
       format.js
     end
   end
@@ -75,15 +71,14 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    if @product.update(product_params)
+      flash[:notice] = 'Product was successfully updated.'
+    else
+      flash[:error] = @product.errors.full_messages.first
+      set_product
+    end
     respond_to do |format|
-      if @product.update(product_params)
-        flash[:notice] = 'Product was successfully updated.'
-        format.html { redirect_to @product }
-        format.js
-      else
-        flash[:error] = 'There are some errors while updating product.'
-        format.html { render :edit }
-      end
+      format.js
     end
   end
 

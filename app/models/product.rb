@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
 
+  validates_presence_of :name, :price, :category
+  validates :price, numericality: { greater_than_or_equal_to: 0}
+
   belongs_to :category
   has_many :order_items
   has_one :product_sale

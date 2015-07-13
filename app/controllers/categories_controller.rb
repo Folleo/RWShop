@@ -17,7 +17,6 @@ class CategoriesController < ApplicationController
   def edit
     respond_to do | format |
       format.js
-      format.html
     end
   end
 
@@ -26,29 +25,27 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @categories = Category.all.order(:id)
-
+    if @category.save
+      flash[:notice] = 'Category was successfully created.'
+    else
+      flash[:error] = @category.errors.full_messages.first
+    end
     respond_to do |format|
-      if @category.save
-        flash[:notice] = 'Category was successfully created.'
-        format.js
-      else
-        flash[:error] = 'There are some errors while creating new category.'
-      end
+      format.js
     end
   end
 
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    if @category.update(category_params)
+      flash[:notice] = 'Category was successfully updated.'
+    else
+      flash[:error] = @category.errors.full_messages.first
+      set_category
+    end
     respond_to do |format|
-      if @category.update(category_params)
-        flash[:notice] = 'Category was successfully updated.'
-        format.html { redirect_to @category }
-        format.js
-      else
-        flash[:error] = 'There are some errors while updating category.'
-        format.html { render :edit }
-      end
+      format.js
     end
   end
 
@@ -59,9 +56,12 @@ class CategoriesController < ApplicationController
     unless products.nil?
       products.destroy_all
     end
-    @category.destroy
+    if @category.destroy
+      flash[:notice] = 'Category has been successfully deleted'
+    else
+      flash[:error] = @category.errors.full_messages.first
+    end
     @categories = Category.all.order('id')
-    flash[:notice] = 'Category has been successfully deleted'
     respond_to do |format|
       format.js
     end

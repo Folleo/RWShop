@@ -6,9 +6,11 @@ fade_flash = ->
 fade_flash()
 
 show_ajax_message = (msg, type) ->
+  if type == 'alert' or type == 'error'
+    alert = 'alert'
   $('#flash-message').replaceWith(
       '<div class="row" id="flash-message">' +
-        '<div data-alert class="alert-box" id="flash_' + type + '">' + msg +
+        '<div data-alert class="alert-box ' + alert + '" id="flash_' + type + '">' + msg +
           '<a href="#" class="close">&times;</a>' +
         '</div>' +
       '</div>')

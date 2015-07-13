@@ -8,7 +8,7 @@
           <div class="small-1 column"><%= f.number_field :discount_amount, placeholder: 'discount amount' %></div>
           <div class="small-5 column"><%= f.text_field :image, placeholder: 'image' %></div>
           <div class="small-1 column end">
-            <%= link_to category_path, :onclick => "$('.edit_form').submit()", remote: true do %>
+            <%= link_to '#', :onclick => "$('.edit_form').submit()", remote: true do %>
                 <i class="fi-save"></i>
             <% end %>&nbsp;&nbsp;&nbsp;&nbsp;
             <%= link_to category_row_path, remote: true do %>
