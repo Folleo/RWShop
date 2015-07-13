@@ -16,7 +16,9 @@
             <%= link_to category, :remote => true do %>
                 <div class="panel callout radius">
                   <h6><%= category.name %></h6>
-                  <%= image_tag category.image %>
+                  <% unless category.image.blank? %>
+                      <%= image_tag category.image %>
+                  <% end %>
                 </div>
             <% end %>
         <% end %>
