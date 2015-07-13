@@ -22,6 +22,13 @@
             <%= f.submit 'Update', class: 'button postfix' %>
           </div>
         </div>
+
+        <% if product.category.has_discount %>
+            <div class="row collapse prefix-radius text-left product-label">
+              Select <%= product.category.discount_amount %> products to get <%= product.category.discount_percent %> % discount.
+            </div>
+        <% end %>
+
         <%= f.hidden_field :product_id, value: product.id %>
 
       </div>
