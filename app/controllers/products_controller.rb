@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
       if @product.save
         flash[:notice] = 'Product was successfully created.'
       else
-        flash[:notice] = 'There are some errors while creating new product.'
+        flash[:error] = 'There are some errors while creating new product.'
       end
       format.js
     end
@@ -77,12 +77,12 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @product }
+        flash[:notice] = 'Product was successfully updated.'
+        format.html { redirect_to @product }
         format.js
       else
+        flash[:error] = 'There are some errors while updating product.'
         format.html { render :edit }
-        #format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -90,10 +90,11 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    if !@product.product_sale.nil?
+    unless @product.product_sale.nil?
       @product.product_sale.destroy
     end
     @product.destroy
+    flash[:notice] = 'Product has been successfully deleted'
     @products = Product.all.order(:id)
   end
 

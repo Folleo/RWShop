@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
         flash[:notice] = 'Category was successfully created.'
         format.js
       else
-        flash[:notice] = 'There are some errors while creating new category.'
+        flash[:error] = 'There are some errors while creating new category.'
       end
     end
   end
@@ -52,9 +52,11 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        flash[:notice] = 'Category was successfully updated.'
+        format.html { redirect_to @category }
         format.js
       else
+        flash[:error] = 'There are some errors while updating category.'
         format.html { render :edit }
       end
     end
@@ -64,11 +66,12 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     products = Product.where(category_id: params[:id])
-    if !products.nil?
+    unless products.nil?
       products.destroy_all
     end
     @category.destroy
     @categories = Category.all.order('id')
+    flash[:notice] = 'Category has been successfully deleted'
     respond_to do |format|
       format.js
     end
@@ -90,7 +93,7 @@ class CategoriesController < ApplicationController
         flash[:notice] = 'Products successfully binded to new category'
       end
     else
-      flash[:notice] = 'Incorrect value of new category id'
+      flash[:error] = 'Incorrect value of new category id'
     end
   end
 

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_order
+  after_filter :flash_to_headers
 
   def current_order
     if !session[:order_id].nil?
@@ -48,6 +49,27 @@ class ApplicationController < ActionController::Base
 
   def is_number? string
     true if Float(string) rescue false
+  end
+
+  def flash_to_headers
+    return unless request.xhr?
+    response.headers['X-Message'] = flash_message
+    response.headers['X-Message-Type'] = flash_type.to_s
+    flash.discard
+  end
+
+  private
+
+  def flash_message
+    result = ''
+    [:error, :warning, :notice].each do |type|
+      result += flash[type] unless flash[type].blank?
+    end
+    result.blank? ? '' : result
+  end
+
+  def flash_type
+     [:error, :warning, :notice].select { |type| !flash[type].blank? }.first
   end
 
 end

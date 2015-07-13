@@ -18,7 +18,9 @@ class AdminController < ApplicationController
 
   def change_user_state
     @user = User.find(params[:id])
-    @user.update_attribute(:disabled, !@user.disabled)
+    if @user.update_attribute(:disabled, !@user.disabled)
+      flash[:notice] = 'User state has been successfully changed.'
+    end
     respond_to do |format|
       format.js
     end

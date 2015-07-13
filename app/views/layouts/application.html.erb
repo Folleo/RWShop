@@ -13,8 +13,7 @@
   <body>
 
   <%= render 'layouts/header' %>
-  <span data-alert id="alerts">
-  <%= render 'layouts/alerts' %></span>
+  <div class="row" id="flash-message"></div>
 
   <div id="main-content" class="row full-min-height">
     <%= yield %>
