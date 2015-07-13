@@ -18,9 +18,9 @@
 
         <% Product.categories.each do |category| %>
             <%= link_to fetch_products_path(cat_id: category.id), remote: true do %>
-                <div class="panel callout radius">
-                  <h6><%= category.name %></h6>
-                  <% unless category.image.blank? %>
+                <div id="category-<%= category.id %>" class="panel radius">
+                <h6><%= category.name %></h6>
+                <% unless category.image.blank? %>
                       <%= image_tag category.image %>
                   <% end %>
                 </div>
