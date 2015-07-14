@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @products = Product.all.order(:id)
     if @product.save
-      flash[:notice] = 'Продукт успешно создан.'
+      flash[:notice] = 'Product has been successfully created.'
     else
       flash[:error] = @product.errors.full_messages.first
     end
@@ -72,7 +72,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     if @product.update(product_params)
-      flash[:notice] = 'Продукт успешно обновлен.'
+      flash[:notice] = 'Product has been successfully updated.'
     else
       flash[:error] = @product.errors.full_messages.first
       set_product
@@ -89,7 +89,7 @@ class ProductsController < ApplicationController
       @product.product_sale.destroy
     end
     @product.destroy
-    flash[:notice] = 'Продукт успешно удален.'
+    flash[:notice] = 'Product has been successfully deleted.'
     @products = Product.all.order(:id)
   end
 

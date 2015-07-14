@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @categories = Category.all.order(:id)
     if @category.save
-      flash[:notice] = 'Категория успешно создана.'
+      flash[:notice] = 'Category has been successfully created.'
     else
       flash[:error] = @category.errors.full_messages.first
     end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     if @category.update(category_params)
-      flash[:notice] = 'Категория успешно обновлена.'
+      flash[:notice] = 'Category has been successfully updated.'
     else
       flash[:error] = @category.errors.full_messages.first
       set_category
@@ -57,7 +57,7 @@ class CategoriesController < ApplicationController
       products.destroy_all
     end
     if @category.destroy
-      flash[:notice] = 'Категория успешно удалена.'
+      flash[:notice] = 'Category has been successfully deleted.'
     else
       flash[:error] = @category.errors.full_messages.first
     end
@@ -79,10 +79,10 @@ class CategoriesController < ApplicationController
       @new_category = Category.find(params[:new_category_id])
       products = Product.where(category_id: @category.id)
       if products.update_all(category_id: @new_category.id)
-        flash[:notice] = 'Связанные продукты перемещены в другую категорию.'
+        flash[:notice] = 'Binded products have been moved to another category.'
       end
     else
-      flash[:error] = 'Неверное значение id новой категории'
+      flash[:error] = 'Incorrect new category id value'
     end
     render nothing: true
   end
