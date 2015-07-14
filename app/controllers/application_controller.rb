@@ -52,9 +52,10 @@ class ApplicationController < ActionController::Base
   end
 
   def flash_to_headers
-    return unless request.xhr?
-    response.headers['X-Message'] = flash_message
-    response.headers['X-Message-Type'] = flash_type.to_s
+    if request.xhr?
+      response.headers['X-Message'] = flash_message
+      response.headers['X-Message-Type'] = flash_type.to_s
+    end
     flash.discard
   end
 
