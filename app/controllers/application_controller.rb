@@ -55,8 +55,8 @@ class ApplicationController < ActionController::Base
     if request.xhr?
       response.headers['X-Message'] = flash_message
       response.headers['X-Message-Type'] = flash_type.to_s
+      flash.discard
     end
-    flash.discard
   end
 
   private
