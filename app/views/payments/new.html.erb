@@ -32,6 +32,10 @@
             <%= f.text_field :last_name, class: 'form-control' %>
           </div>
           <div class="form-group">
+            <%= f.label 'Shipping address', class: 'control-label' %>
+            <%=  %>
+          </div>
+          <div class="form-group">
             <%= f.hidden_field :amount, :value => current_order.subtotal %>
             <p class="mb0"> Total price: <%= number_to_currency(current_order.subtotal, locale: :ru) %> </p>
             <br>

@@ -1,7 +1,9 @@
 <li>
-  <%= link_to product, class: 'poster' do %>
+  <%= link_to product do %>
       <% unless product.image.blank? %>
-          <%= image_tag product.image %>
+          <div  class="p1 text-center">
+            <%= image_tag product.image %>
+          </div>
       <% end %>
       <div class="product-info ell panel-bg padmy padlx">
         <div class="title">

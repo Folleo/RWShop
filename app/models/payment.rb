@@ -2,7 +2,7 @@ class Payment < ActiveRecord::Base
 
   def process
     # Billing should be implemented here
-    # But according to the test it's unnecessary
+    # But according to the test task it's unnecessary
     self.success = true
     self.save
 

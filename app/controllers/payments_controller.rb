@@ -1,10 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!, :require_user
 
-  def index
-    @payments = Payment.all
-  end
-
   def new
     @payment = Payment.new
   end

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :products
-  resources :payments, only: [:index, :new, :create]
+  resources :payments, only: [:new, :create]
   resources :admin
 
   resource :cart, only: [:show]  do
