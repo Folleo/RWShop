@@ -1,21 +1,36 @@
+<h3 class="mbm mt1 text-left">
+  <%= @product.name %>
+</h3>
+
+<p>Category: <%= @product.category.name %></p>
+
+<p><%= @product.description %></p>
+
+<p class="label product-price radius mb1"><%= number_to_currency(@product.price, locale: :ru) %></p>
+
 <%= form_for @order_item, html: {class: 'order_item_form'}, remote: true do |f| %>
-    <h4 class="text-right">
-      Unit Price: <%= number_to_currency(@product.price, locale: :ru) %>
-    </h4>
-    <div class="input-group">
-      <%= f.number_field :quantity, value: @order_item.quantity, class: 'form-control', min: 1 %>
-      <div class="input-group-btn">
+    <div class="column large-4 p0">
+
         <%= f.hidden_field :product_id, value: product.id %>
-        <% if @product.id != @order_item.product_id %>
-            <%= f.submit 'Add to Cart', class: 'button', id: 'cart_button' %>
-        <% else %>
-            <%= f.submit 'Update Cart', class: 'button', id: 'cart_button' %>
-        <% end %>
-        <%#= link_to 'Add to Cart', order_items_path, onclick: "$('#order_item_form').submit()", class: 'button', id: 'cart_button', remote: true, method: :post %>
-        <%= link_to cart_path, class: 'button', id: 'cart_link', style: 'display: none' do %>
-            <i class="fi-shopping-cart"></i>
-            Go to Cart
-        <% end %>
+
+        <div class="row">
+          <div class="small-4 columns ptm">
+            <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 1 %>
+          </div>
+          <div class="small-8 columns end">
+
+            <%= f.submit(
+                (@product.id != @order_item.product_id ? 'Add to Cart' : 'Update Cart'),
+                class: 'button',
+                id: 'cart_button' )%>
+
+            <%= link_to cart_path, class: 'button', id: 'cart_link', style: 'display: none' do %>
+                <i class="fi-shopping-cart"></i> My Cart
+            <% end %>
+
+          </div>
+        </div>
+
       </div>
-    </div>
+
 <% end %>

@@ -9,7 +9,9 @@ $base-space-unit: 1.5em;
 .primary-bg { background-color: #EEEEEE}
 .panel-bg { background-color: scale-color(whitesmoke, $lightness: -5%) }
 
-.product-label {  font-size: 10pt; }
+.product-label { font-size: 10pt; }
+
+.product-price { font-size: 16pt; }
 
 // Displays
 .block { display: block }
