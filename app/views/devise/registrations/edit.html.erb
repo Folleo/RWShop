@@ -9,33 +9,33 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Ждем подтверждение для: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(�������� ������, ���� �� ������ ��������)</i><br />
+    <%= f.label 'Новый пароль' %> <i>(оставьте пустым, если не хотите изменять)</i><br />
     <%= f.password_field :password, autocomplete: 'off' %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Подтверждение пароля' %><br />
     <%= f.password_field :password_confirmation, autocomplete: 'off' %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label 'Текущий пароль' %> <i>(необходимо ввести текущий пароль для подтверждения)</i><br />
     <%= f.password_field :current_password, autocomplete: 'off' %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Update', class: 'button' %>
+    <%= f.submit 'Обновить информацию', class: 'button' %>
   </div>
 <% end %>
 
-<h4>������� ��� �������</h4>
+<h4>Удалить мой аккаунт</h4>
 
-<p>�������?
-  <%= button_to '������� �������', registration_path(resource_name), data: { confirm: '�� �������?'}, method: :delete, class: 'button' %>
+<p>Удалить?
+  <%= button_to 'Удалить аккаунт', registration_path(resource_name), data: { confirm: 'Вы уверены?'}, method: :delete, class: 'button' %>
 </p>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Назад', :back %>
