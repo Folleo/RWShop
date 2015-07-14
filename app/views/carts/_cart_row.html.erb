@@ -25,7 +25,7 @@
 
         <% if product.category.has_discount %>
             <div class="row collapse prefix-radius text-left product-label">
-              Discount offer! Select at least <%= product.category.discount_amount %> products to get <%= product.category.discount_percent %> % discount.
+              Discount offer! Select <%= product.category.discount_amount %> products or more and get <%= product.category.discount_percent %> % discount.
             </div>
         <% end %>
 
