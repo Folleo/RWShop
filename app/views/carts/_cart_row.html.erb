@@ -40,13 +40,13 @@
         <% end %>
 
         <div class="column cart-label">
-          Количество:
-          <%= order_item.quantity %>
+          Цена:
+          <%= number_to_currency(order_item.unit_price, locale: :ru) %>
         </div>
 
         <div class="column cart-label">
-          Цена:
-          <%= number_to_currency(order_item.unit_price, locale: :ru) %>
+          Количество:
+          <%= order_item.quantity %>
         </div>
 
         <div class="column cart-label">
