@@ -10,6 +10,7 @@
         <div class="hide-for-small panel">
           <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Категории &raquo;</a>
           <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+            <li><%= link_to 'Популярные товары', fetch_products_path, remote: true %></li>
             <% Product.categories.each do |category| %>
                 <li><%= link_to category.name, fetch_products_path(cat_id: category.id), remote: true %></li>
             <% end %>
@@ -18,7 +19,7 @@
 
         <% Product.categories.each do |category| %>
             <%= link_to fetch_products_path(cat_id: category.id), remote: true do %>
-                <div id="category-<%= category.id %>" class="panel radius">
+                <div id="category-<%= category.id %>" class="panel radius text-center">
                   <h6><%= category.name %></h6>
                   <% unless category.image.blank? %>
                       <%= image_tag category.image %>
