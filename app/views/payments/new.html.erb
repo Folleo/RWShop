@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
+  <div class="mt1">
 
-    <h3>Checkout Page</h3>
+    <h3>Оформление заказа</h3>
 
     <% if @payment.errors.any? %>
         <div class="alert alert-danger">
@@ -14,9 +14,9 @@
     <% end %>
 
     <!-- Display items number in the cart and total price -->
-    <p class="mb0">You've selected
+    <p class="mb0">Вы выбрали
       <%= link_to cart_path do %>
-          <span class="cart-count"><%= current_order.order_items.size %></span> product(s)
+          <span class="cart-count"><%= current_order.order_items.size %></span> товар(ов)
       <% end %>
     </p>
     <br>
@@ -24,24 +24,20 @@
     <div class="well">
       <%= form_for @payment do |f| %>
           <div class="form-group">
-            <%= f.label :first_name, class: 'control-label' %>
+            <%= f.label 'Имя', class: 'control-label' %>
             <%= f.text_field :first_name, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.label :last_name, class: 'control-label' %>
+            <%= f.label 'Фамилия', class: 'control-label' %>
             <%= f.text_field :last_name, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.label 'Shipping address', class: 'control-label' %>
-            <%=  %>
-          </div>
-          <div class="form-group">
             <%= f.hidden_field :amount, :value => current_order.subtotal %>
-            <p class="mb0"> Total price: <%= number_to_currency(current_order.subtotal, locale: :ru) %> </p>
+            <p class="mb0"> Итоговая цена: <%= number_to_currency(current_order.subtotal, locale: :ru) %> </p>
             <br>
           </div>
           <div class="form-group">
-            <%= f.submit 'Place Order', class: 'button' %>
+            <%= f.submit 'Заказать', class: 'button' %>
           </div>
       <% end %>
     </div>

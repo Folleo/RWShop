@@ -15,19 +15,19 @@
     <% end %>
 
     <%= link_to bind_products_path(category.id),
-                data: { prompt: { message: 'Enter new category id:',param: 'new_category_id' } },
-                title: 'bind products to another category',
+                data: { prompt: { message: 'Введите id новой категории:',param: 'new_category_id' } },
+                title: 'привязать продукты к другой категории',
                 remote: true do %>
         <i class="fi-arrows-expand"></i>
     <% end %>
 
     <%= link_to category, method: :delete,
                           remote: true,
-                          title: 'delete category',
+                          title: 'удалить категорию',
                           data: { confirm:
-                               "Are you sure want to delete '#{category.name}'?\n" +
-                               "Note: all products, related to this category will be deleted as well.\n" +
-                               'You can bind all products to another category by selecting appropriate action.'} do %>
+                               "Вы уверены, что хотите удалить '#{category.name}'?\n" +
+                               "Внимание! Все продукты, принадлежащие этой категории будут также удалены.\n" +
+                               'Вы можете переназначить продукты другой категории, выбрав соответсвующее действие.'} do %>
         <i class="fi-minus-circle"></i>
     <% end %>
   </td>

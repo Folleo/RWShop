@@ -7,14 +7,18 @@
   <td><%= product.category.name %></td>
   <td><%= product.image %></td>
   <td>
-    <%= link_to :controller => 'products', :action => 'edit', :id => product.id, remote: true do %>
+    <%= link_to controller: 'products',
+                action: 'edit',
+                id: product.id,
+                remote: true do %>
         <i class="fi-page-edit"></i>
     <% end %>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to product, {
                         method: :delete,
+                        title: 'удалить продукт',
                         remote: true,
-                        data: { confirm: "Are you sure to delete '#{product.name}'?"} } do %>
+                        data: { confirm: "Вы уверены, что хотите удалить '#{product.name}'?"} } do %>
         <i class="fi-minus-circle"></i>
     <% end %>
   </td>

@@ -13,19 +13,19 @@
 
         <div class="row collapse prefix-radius">
           <div class="small-3 columns">
-            <span class="prefix">Quantity</span>
+            <span class="prefix">Количество</span>
           </div>
           <div class="small-6 columns">
             <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 1 %>
           </div>
           <div class="small-3 columns">
-            <%= f.submit 'Update', class: 'button postfix' %>
+            <%= f.submit 'Обновить', class: 'button postfix' %>
           </div>
         </div>
 
         <% if product.category.has_discount %>
             <div class="row collapse prefix-radius text-left product-label">
-              Discount offer! Select <%= product.category.discount_amount %> products or more and get <%= product.category.discount_percent %> % discount.
+              Предусмотрены скидки! Выберите <%= product.category.discount_amount %> товаров или более и получите <%= product.category.discount_percent %> % скидку.
             </div>
         <% end %>
 
@@ -39,23 +39,23 @@
             <i class="fi-x right"></i>
         <% end %>
 
-        <div class="column">
-          Quantity:
+        <div class="column cart-label">
+          Количество:
           <%= order_item.quantity %>
         </div>
 
-        <div class="column">
-          Unit price:
+        <div class="column cart-label">
+          Цена:
           <%= number_to_currency(order_item.unit_price, locale: :ru) %>
         </div>
 
-        <div class="column">
-          Discount:
+        <div class="column cart-label">
+          Скидка:
           <%= order_item.has_discount ? product.category.discount_percent : '0' %>%
         </div>
 
-        <div class="column">
-          Total:
+        <div class="column cart-label">
+          Итого:
           <span style="color: green"><%= number_to_currency(order_item.total_price, locale: :ru) %></span>
         </div>
       </div>

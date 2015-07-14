@@ -2,7 +2,7 @@
   <%= @product.name %>
 </h3>
 
-<p>Category: <%= @product.category.name %></p>
+<p>Категория: <%= @product.category.name %></p>
 
 <p><%= @product.description %></p>
 
@@ -20,12 +20,12 @@
           <div class="small-8 columns end">
 
             <%= f.submit(
-                (@product.id != @order_item.product_id ? 'Add to Cart' : 'Update Cart'),
+                (@product.id != @order_item.product_id ? 'Добавить' : 'Обновить'),
                 class: 'button',
                 id: 'cart_button' )%>
 
             <%= link_to cart_path, class: 'button', id: 'cart_link', style: 'display: none' do %>
-                <i class="fi-shopping-cart"></i> My Cart
+                <i class="fi-shopping-cart"></i> Корзина
             <% end %>
 
           </div>

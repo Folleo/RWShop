@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
           order_item.update_sales
         end
         session[:order_id] = nil
-        redirect_to root_path, notice: 'The order has been successfully placed. Thank you' and return
+        redirect_to root_path and return
       end
     end
     render 'new'
